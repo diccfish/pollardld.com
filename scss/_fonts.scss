@@ -1,0 +1,260 @@
+@font-face {
+    font-family: 'lookupregular';
+    src: url('../fonts/look-up-webfont.eot');
+    src: url('../fonts/look-up-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/look-up-webfont.woff') format('woff'),
+         url('../fonts/look-up-webfont.ttf') format('truetype'),
+         url('../fonts/look-up-webfont.svg#lookupregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'cubano';
+    src: url('../fonts/cubano-regular-webfont.eot');
+    src: url('../fonts/cubano-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/cubano-regular-webfont.woff') format('woff'),
+         url('../fonts/cubano-regular-webfont.ttf') format('truetype'),
+         url('../fonts/cubano-regular-webfont.svg#lookupregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+  font-family: "icons";
+  src:url("../fonts/icons.eot");
+  src:url("../fonts/icons.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/icons.woff") format("woff"),
+    url("../fonts/icons.ttf") format("truetype"),
+    url("../fonts/icons.svg#untitled-font-4") format("svg");
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+[data-icon]:before {
+  font-family: "icons" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: "icons" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-earth-globe-streamline:before {
+  content: "a";
+}
+.icon-chef-food-restaurant-streamline:before {
+  content: "b";
+}
+.icon-danger-death-delete-destroy-skull-stream:before {
+  content: "c";
+}
+.icon-eat-food-hotdog-streamline:before {
+  content: "d";
+}
+.icon-link-streamline:before {
+  content: "f";
+}
+.icon-micro-record-streamline:before {
+  content: "g";
+}
+.icon-music-note-streamline:before {
+  content: "e";
+}
+.icon-music-speaker-streamline:before {
+  content: "h";
+}
+.icon-headset-sound-streamline:before {
+  content: "i";
+}
+.icon-paint-bucket-streamline:before {
+  content: "j";
+}
+.icon-painting-pallet-streamline:before {
+  content: "k";
+}
+.icon-painting-roll-streamline:before {
+  content: "l";
+}
+.icon-pen-streamline:before {
+  content: "m";
+}
+.icon-pen-streamline-3:before {
+  content: "n";
+}
+.icon-pen-streamline-1:before {
+  content: "o";
+}
+.icon-picture-streamline-1:before {
+  content: "p";
+}
+.icon-picture-streamline:before {
+  content: "q";
+}
+.icon-receipt-shopping-streamline:before {
+  content: "r";
+}
+.icon-settings-streamline-1:before {
+  content: "s";
+}
+.icon-settings-streamline-2:before {
+  content: "t";
+}
+.icon-shoes-snickers-streamline:before {
+  content: "u";
+}
+.icon-map-streamline-user:before {
+  content: "v";
+}
+.icon-map-pin-streamline:before {
+  content: "w";
+}
+.icon-macintosh:before {
+  content: "x";
+}
+.icon-diving-leisure-sea-sport-streamline:before {
+  content: "y";
+}
+.icon-bomb-bug:before {
+  content: "z";
+}
+.icon-barista-coffee-espresso-streamline:before {
+  content: "A";
+}
+.icon-backpack-streamline-trekking:before {
+  content: "B";
+}
+.icon-armchair-chair-streamline:before {
+  content: "C";
+}
+.icon-bulb:before {
+  content: "D";
+}
+.icon-lab:before {
+  content: "E";
+}
+.icon-cloud:before {
+  content: "F";
+}
+.icon-clock:before {
+  content: "G";
+}
+.icon-data:before {
+  content: "H";
+}
+.icon-diamond:before {
+  content: "I";
+}
+.icon-search:before {
+  content: "J";
+}
+.icon-paperplane:before {
+  content: "K";
+}
+.icon-github-alt:before {
+  content: "M";
+}
+.icon-google:before {
+  content: "N";
+}
+.icon-linkedin:before {
+  content: "O";
+}
+.icon-rss:before {
+  content: "L";
+}
+.icon-study:before {
+  content: "P";
+}
+.icon-home-house-streamline:before {
+  content: "Q";
+}
+.icon-facebook:before {
+  content: "R";
+}
+.icon-eye:before {
+  content: "S";
+}
+.icon-display:before {
+  content: "T";
+}
+.icon-banknote:before {
+  content: "U";
+}
+.icon-streamline-umbrella-weather:before {
+  content: "V";
+}
+.icon-stamp-streamline:before {
+  content: "W";
+}
+.icon-man-people-streamline-user:before {
+  content: "X";
+}
+.icon-japan-streamline-tea:before {
+  content: "Y";
+}
+.icon-eye-dropper-streamline:before {
+  content: "Z";
+}
+.icon-envellope-mail-streamline:before {
+  content: "0";
+}
+.icon-email-mail-streamline:before {
+  content: "1";
+}
+.icon-eat-food-fork-knife-streamline:before {
+  content: "2";
+}
+.icon-crown-king-streamline:before {
+  content: "3";
+}
+.icon-dashboard-speed-streamline:before {
+  content: "4";
+}
+.icon-database-streamline:before {
+  content: "5";
+}
+.icon-coffee-streamline:before {
+  content: "6";
+}
+.icon-cocktail-mojito-streamline:before {
+  content: "7";
+}
+.icon-chaplin-hat-movie-streamline:before {
+  content: "8";
+}
+.icon-camera-streamline-video:before {
+  content: "9";
+}
+.icon-barbecue-eat-food-streamline:before {
+  content: "!";
+}
+.icon-camera-photo-polaroid-streamline:before {
+  content: "\"";
+}
+.icon-arrow-streamline-target:before {
+  content: "#";
+}
+.icon-fontawesome-webfont:before {
+  content: "$";
+}

@@ -1,0 +1,121 @@
+h1 {
+	font-size: 7rem;
+}
+
+h2 {
+	font-size: 3rem;
+}
+
+.nav-check {
+	
+	&:checked {
+		left: 30%;
+		width: 70%;
+
+		& + .navicon {
+			left: 30%;
+		}
+
+		& ~ nav {
+			left: 0;
+		}
+	}
+}
+
+nav {
+	left: -30%;
+	width: 30%;
+}
+
+header {
+	height: 80vh;
+	padding: 10vh $padding 0;
+
+	&:after {
+		background: rgba($grey, 0.1);
+		border-radius: 45%;
+		content: '';
+		height: 45vw;
+		left: 20%;
+		position: absolute;
+		top: 55%;
+		width: 60%;
+		z-index: -1;
+	}
+}
+
+.pteranodon {
+	padding-top: 10em;
+	top: -90vh;
+
+	&:after {
+		height: 16em;
+	}
+}
+
+main {
+
+	&:before {
+		background: $lightgrey;
+		border-radius: 50%;
+		content: '';
+		height: 50vw;
+		left: 0;
+		position: absolute;
+		top: -15vw;
+		width: 50vw;
+		z-index: -1;
+	}
+
+	&:after {
+		@extend :before;
+		left: auto;
+		right: 0;
+	}
+
+	section {
+
+		article {
+			width: 45%;
+
+			h2 {
+				height: 12rem;
+				padding: 6rem 1rem 0;
+				width: 16rem;
+			}
+		}
+
+		div {
+			width: 50%;
+
+			&.spino {
+				padding-top: 4em;
+				width: 55%;
+				@include vendor-prefix (transform, rotateY(180deg));
+			}
+
+			&.tri {
+				padding-top: 4em;
+			}
+		}
+	}
+}
+
+.icon-layout {
+	top: -45vh;
+
+	article {
+		display: inline-block;
+		margin: 0;
+		vertical-align: middle;
+		width: 40%;
+	}
+
+	div {
+		display: inline-block;
+		margin: 0 -4px;
+		text-align: left;
+		vertical-align: middle;
+		width: 60%;
+	}
+}

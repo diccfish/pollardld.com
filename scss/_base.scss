@@ -1,0 +1,619 @@
+/*============================================
+  Globals
+=============================================*/
+
+body {
+	background: $sky;
+	-webkit-font-smoothing: antialiased;
+}
+
+h1 {
+	font-family: $lookup;
+	font-size: 5rem;
+	font-weight: normal;
+	margin: $margin;
+	text-align: center;
+}
+
+h2 {
+	font-family: $cubano;
+	font-size: 2rem;
+	font-weight: normal;
+	margin: 0;
+
+	span {
+		font-size: .5em;
+	}
+}
+
+h3 {
+	font-family: $cubano;
+	font-size: 1em;
+	font-weight: normal;
+	margin: 0;
+}
+
+a {
+	color: $orange;
+	text-decoration: none;
+	@include vendor-prefix (transition, 0.3s color ease);
+
+	&:hover {
+		color: $green;
+		@include vendor-prefix (transition, 0.3s color ease);
+	}
+}
+
+svg {
+	height: 100%;
+	float: left;
+	width: 100%;
+
+	path {
+		fill: $grey;
+	}
+
+	.eye {
+		fill: $orange;
+	}
+}
+
+/*============================================
+  Offscreen Nav
+=============================================*/
+
+.navicon {
+	color: $blue;
+	left: 0;
+	line-height: 5rem;
+	font-size: 2em;
+	position: fixed;
+	text-align: center;
+	top: 0;
+	width: 5rem;
+	z-index: 2;
+	@include vendor-prefix (transform, rotate(90deg));
+	@include vendor-prefix (transition, 0.3s all ease-out);
+
+	&:hover {
+		color: $orange;
+	}
+}
+
+.nav-check {
+	cursor: pointer;
+	left: 0;
+	height: 5rem;
+	opacity: 0;
+	position: fixed;
+	top: 0;
+	width: 5rem;
+	z-index: 3;
+	@include vendor-prefix (transition, 0.3s all ease-out);
+
+	&:hover {
+		& + .navicon {
+			color: $orange;
+			@include vendor-prefix (transition, 0.3s all ease-out);
+		}
+	}
+
+	&:checked {
+		height: 100%;
+		left: 70%;
+		width: 70%;
+		@include vendor-prefix (transition, 0.3s all ease-out);
+
+		& + .navicon {
+			left: 70%;
+			@include vendor-prefix (transition, 0.3s all ease-out);
+		}
+
+		& ~ nav {
+			left: 0;
+			@include vendor-prefix (transition, 0.3s left ease-out);
+		}
+	}
+}
+
+nav {
+	background-color: #ff6969;
+	background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHhtbG5zOnhsaW5rPSdodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rJyB3aWR0aD0nNjAwJyBoZWlnaHQ9JzYwMCcgdmlld0JveD0nMCAwIDE1MCAxNTAnPgo8ZmlsdGVyIGlkPSdpJyB4PScwJyB5PScwJz4KCTxmZUNvbG9yTWF0cml4IHR5cGU9J21hdHJpeCcgdmFsdWVzPScxIDAgMCAwIDAgIDAgMSAwIDAgMCAgMCAwIDEgMCAwICAwIDAgMCAwIDAnIC8+CjwvZmlsdGVyPgo8ZmlsdGVyIGlkPSduJyB4PScwJyB5PScwJz4KCTxmZVR1cmJ1bGVuY2UgdHlwZT0ndHVyYnVsZW5jZScgYmFzZUZyZXF1ZW5jeT0nLjcnIHJlc3VsdD0nZnV6eicgbnVtT2N0YXZlcz0nMicgc3RpdGNoVGlsZXM9J3N0aXRjaCcvPgoJPGZlQ29tcG9zaXRlIGluPSdTb3VyY2VHcmFwaGljJyBpbjI9J2Z1enonIG9wZXJhdG9yPSdhcml0aG1ldGljJyBrMT0nMCcgazI9JzEnIGszPSctNzEuNTUnIGs0PScuMDEnIC8+CjwvZmlsdGVyPgo8cmVjdCB3aWR0aD0nMTAyJScgaGVpZ2h0PScxMDIlJyBmaWxsPScjZmY2OTY5Jy8+CjxyZWN0IHg9Jy0xJScgeT0nLTElJyB3aWR0aD0nMTAyJScgaGVpZ2h0PScxMDIlJyBmaWxsPScjZmZjZjY2JyBmaWx0ZXI9J3VybCgjbiknIG9wYWNpdHk9JzEnLz4KPHJlY3QgeD0nLTElJyB5PSctMSUnIHdpZHRoPScxMDIlJyBoZWlnaHQ9JzEwMiUnIGZpbGw9JyNmZjY5NjknIGZpbHRlcj0ndXJsKCNpKScgb3BhY2l0eT0nMScvPgo8L3N2Zz4=');
+	height: 100%;
+	left: -70%;
+	overflow: scroll;
+	padding-top: $padding;
+	position: fixed;
+	top: 0;
+	width: 70%;
+	z-index: 3;
+	@include vendor-prefix (transition, 0.3s left ease-out);
+
+	a {
+		border-bottom: 1px solid #fff;
+		color: #fff;
+		display: block;
+		font-family: $vollkorn;
+		font-size: 1.25em;
+		line-height: 4rem;
+		margin-bottom: 2rem;
+		padding-right: 2rem;
+		position: relative;
+		text-align: right;
+		@include vendor-prefix (transition, 0.3s all ease);
+
+		&:hover {
+			color: $sky;
+			padding-right: 5rem;
+			@include vendor-prefix (transition, 0.3s all ease);
+
+			&:after {
+				content: '< < <';
+				position: absolute;
+				right: 1em;
+				top: 0;
+				@include vendor-prefix (transition, 0.6s all ease);
+			}
+		}
+
+		&:after {
+			@include vendor-prefix (transition, 0.6s all ease);
+		}
+	}
+}
+
+/*============================================
+  Header
+=============================================*/
+
+header {
+	background: -ms-linear-gradient(top, #00e1ff 0%,#4ee9ff 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #00e1ff 0%,#4ee9ff 100%); /* W3C */
+	color: $blue;
+	height: 22em;
+	margin: 0 auto;
+	overflow: hidden;
+	padding: 8em $padding 0;
+	position: relative;
+	text-align: center;
+	z-index: -1;
+
+	h2 {
+		font-size: 1.3125em;
+	}
+}
+
+/*============================================
+  Index
+=============================================*/
+
+.pteranodon {
+	height: 12em;
+	padding-top: 0em;
+	position: absolute;
+	right: 4em;
+	top: -30em;
+	width: 12em;
+	@include vendor-prefix (animation, swing 6s linear infinite);
+	@include vendor-prefix (transform-origin, top center);
+
+	&:after {
+		background: $grey;
+		content: '';
+		height: 6em;
+		position: absolute;
+		right: 6em;
+		top: 0em;
+		width: 1px;
+	}
+
+	svg {
+		height: 100%;
+		width: 100%;
+	}
+}
+
+.triceratops {
+	height: 8em;
+	left: 5em;
+	position: absolute;
+	top: -7em;
+	z-index: 1;
+	@include vendor-prefix (animation, roam 6s linear infinite);
+
+	&:after {
+		background: $grey;
+		content: '';
+		height: 1px;
+		position: absolute;
+		left: -6em;
+		top: 4em;
+		width: 12em;
+	}
+
+	svg {
+		height: 100%;
+		width: 100%;
+	}
+}
+
+/*============================================
+  Page
+=============================================*/
+
+main {
+	background: $lightgreen;
+	color: $grey;
+	font-family: $vollkorn;
+	font-weight: normal;
+	letter-spacing: .02em;
+	position: relative;
+
+	section {
+		margin: 0 auto;
+		overflow: hidden;
+		margin-bottom: 2rem;
+		padding: $padding $padding 4rem;
+		position: relative;
+		width: 80%;
+		max-width: 80em;
+
+		&:first-of-type {
+			article, div {
+				margin-top: 4em;
+			}
+		}
+
+		&:last-of-type {
+			margin-bottom: 0;
+
+			&:after {
+				height: 0;
+			}
+		}
+
+		&:after {
+			background-color: #57ecdc;
+			background-image:url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHhtbG5zOnhsaW5rPSdodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rJyB3aWR0aD0nMzYwJyBoZWlnaHQ9JzIxMCcgdmlld0JveD0nMCAwIDcyIDQyJz4KCTxkZWZzPgoJCTxwYXRoIGlkPSdzJyBmaWxsPScjMkJBRUMyJyBkPSdNMCwwbDUgMi41bC01LDIuNXonLz4KCTwvZGVmcz4KCTxnIGlkPSdiJz4KCTx1c2UgeD0nLTUnIHk9Jy0yLjUnIHRyYW5zZm9ybT0nbWF0cml4KC0xIDAgMCAxIDAgMCknIGZpbGwtb3BhY2l0eT0nMC4xJyB4bGluazpocmVmPScjcycgLz4KCTx1c2UgeD0nMCcgeT0nMScgZmlsbC1vcGFjaXR5PScwLjE1JyB4bGluazpocmVmPScjcycgLz4KCTx1c2UgeD0nLTUnIHk9JzQuNScgdHJhbnNmb3JtPSdtYXRyaXgoLTEgMCAwIDEgMCAwKScgZmlsbC1vcGFjaXR5PScwLjE1JyB4bGluazpocmVmPScjcycgLz4KCTx1c2UgeD0nMCcgeT0nOCcgZmlsbC1vcGFjaXR5PScwLjE1JyB4bGluazpocmVmPScjcycgLz4KCTx1c2UgeD0nLTUnIHk9JzExLjUnIHRyYW5zZm9ybT0nbWF0cml4KC0xIDAgMCAxIDAgMCknIGZpbGwtb3BhY2l0eT0nMC4yJyB4bGluazpocmVmPScjcycgLz4KCTx1c2UgeD0nMCcgeT0nMTUnIGZpbGwtb3BhY2l0eT0nMC4xJyB4bGluazpocmVmPScjcycgLz4KCTx1c2UgeD0nLTUnIHk9JzE4LjUnIHRyYW5zZm9ybT0nbWF0cml4KC0xIDAgMCAxIDAgMCknIGZpbGwtb3BhY2l0eT0nMC4xJyB4bGluazpocmVmPScjcycgLz4KCTx1c2UgeD0nNicgeT0nLTIuNScgZmlsbC1vcGFjaXR5PScwLjE1JyB4bGluazpocmVmPScjcycgLz4KCTx1c2UgeD0nLTExJyB5PScxJyB0cmFuc2Zvcm09J21hdHJpeCgtMSAwIDAgMSAwIDApJyBmaWxsLW9wYWNpdHk9JzAuMicgeGxpbms6aHJlZj0nI3MnIC8+Cgk8dXNlIHg9JzYnIHk9JzQuNScgZmlsbC1vcGFjaXR5PScwLjE1JyB4bGluazpocmVmPScjcycgLz4KCTx1c2UgeD0nLTExJyB5PSc4JyB0cmFuc2Zvcm09J21hdHJpeCgtMSAwIDAgMSAwIDApJyBmaWxsLW9wYWNpdHk9JzAuMScgeGxpbms6aHJlZj0nI3MnIC8+Cgk8dXNlIHg9JzYnIHk9JzExLjUnIGZpbGwtb3BhY2l0eT0nMC4wNScgeGxpbms6aHJlZj0nI3MnIC8+Cgk8dXNlIHg9Jy0xMScgeT0nMTUnIHRyYW5zZm9ybT0nbWF0cml4KC0xIDAgMCAxIDAgMCknIGZpbGwtb3BhY2l0eT0nMC4xJyB4bGluazpocmVmPScjcycgLz4KCTx1c2UgeD0nNicgeT0nMTguNScgZmlsbC1vcGFjaXR5PScwLjE1JyB4bGluazpocmVmPScjcycgLz4KCTx1c2UgeD0nLTE3JyB5PSctMi41JyB0cmFuc2Zvcm09J21hdHJpeCgtMSAwIDAgMSAwIDApJyBmaWxsLW9wYWNpdHk9JzAuMScgeGxpbms6aHJlZj0nI3MnIC8+Cgk8dXNlIHg9JzEyJyB5PScxJyBmaWxsLW9wYWNpdHk9JzAuMScgeGxpbms6aHJlZj0nI3MnIC8+Cgk8dXNlIHg9Jy0xNycgeT0nNC41JyB0cmFuc2Zvcm09J21hdHJpeCgtMSAwIDAgMSAwIDApJyBmaWxsLW9wYWNpdHk9JzAuMTUnIHhsaW5rOmhyZWY9JyNzJyAvPgoJPHVzZSB4PScxMicgeT0nOCcgZmlsbC1vcGFjaXR5PScwLjEnIHhsaW5rOmhyZWY9JyNzJyAvPgoJPHVzZSB4PSctMTcnIHk9JzExLjUnIHRyYW5zZm9ybT0nbWF0cml4KC0xIDAgMCAxIDAgMCknIGZpbGwtb3BhY2l0eT0nMC4wNScgeGxpbms6aHJlZj0nI3MnIC8+CQoJPHVzZSB4PScxMicgeT0nMTUnIGZpbGwtb3BhY2l0eT0nMC4xJyB4bGluazpocmVmPScjcycgLz4KCTx1c2UgeD0nLTE3JyB5PScxOC41JyB0cmFuc2Zvcm09J21hdHJpeCgtMSAwIDAgMSAwIDApJyBmaWxsLW9wYWNpdHk9JzAuMScgeGxpbms6aHJlZj0nI3MnIC8+Cgk8dXNlIHg9JzE4JyB5PSctMi41JyBmaWxsLW9wYWNpdHk9JzAuMScgeGxpbms6aHJlZj0nI3MnIC8+Cgk8dXNlIHg9Jy0yMycgeT0nMScgdHJhbnNmb3JtPSdtYXRyaXgoLTEgMCAwIDEgMCAwKScgZmlsbC1vcGFjaXR5PScwLjEnIHhsaW5rOmhyZWY9JyNzJyAvPgoJPHVzZSB4PScxOCcgeT0nNC41JyBmaWxsLW9wYWNpdHk9JzAuMDUnIHhsaW5rOmhyZWY9JyNzJyAvPgoJPHVzZSB4PSctMjMnIHk9JzgnIHRyYW5zZm9ybT0nbWF0cml4KC0xIDAgMCAxIDAgMCknIGZpbGwtb3BhY2l0eT0nMC4xNScgeGxpbms6aHJlZj0nI3MnIC8+Cgk8dXNlIHg9JzE4JyB5PScxMS41JyBmaWxsLW9wYWNpdHk9JzAuMTUnIHhsaW5rOmhyZWY9JyNzJyAvPgoJPHVzZSB4PSctMjMnIHk9JzE1JyB0cmFuc2Zvcm09J21hdHJpeCgtMSAwIDAgMSAwIDApJyBmaWxsLW9wYWNpdHk9JzAuMDUnIHhsaW5rOmhyZWY9JyNzJyAvPgoJPHVzZSB4PScxOCcgeT0nMTguNScgZmlsbC1vcGFjaXR5PScwLjEnIHhsaW5rOmhyZWY9JyNzJyAvPgoJPHVzZSB4PSctMjknIHk9Jy0yLjUnIHRyYW5zZm9ybT0nbWF0cml4KC0xIDAgMCAxIDAgMCknIGZpbGwtb3BhY2l0eT0nMC4xNScgeGxpbms6aHJlZj0nI3MnIC8+CQoJPHVzZSB4PScyNCcgeT0nMScgZmlsbC1vcGFjaXR5PScwLjInIHhsaW5rOmhyZWY9JyNzJyAvPgoJPHVzZSB4PSctMjknIHk9JzQuNScgdHJhbnNmb3JtPSdtYXRyaXgoLTEgMCAwIDEgMCAwKScgZmlsbC1vcGFjaXR5PScwLjA1JyB4bGluazpocmVmPScjcycgLz4KCTx1c2UgeD0nMjQnIHk9JzgnIGZpbGwtb3BhY2l0eT0nMC4xJyB4bGluazpocmVmPScjcycgLz4KCTx1c2UgeD0nLTI5JyB5PScxMS41JyB0cmFuc2Zvcm09J21hdHJpeCgtMSAwIDAgMSAwIDApJyBmaWxsLW9wYWNpdHk9JzAuMTUnIHhsaW5rOmhyZWY9JyNzJyAvPgoJPHVzZSB4PScyNCcgeT0nMTUnIGZpbGwtb3BhY2l0eT0nMC4wNScgeGxpbms6aHJlZj0nI3MnIC8+Cgk8dXNlIHg9Jy0yOScgeT0nMTguNScgdHJhbnNmb3JtPSdtYXRyaXgoLTEgMCAwIDEgMCAwKScgZmlsbC1vcGFjaXR5PScwLjE1JyB4bGluazpocmVmPScjcycgLz4KCTx1c2UgeD0nMzAnIHk9Jy0yLjUnIGZpbGwtb3BhY2l0eT0nMC4xJyB4bGluazpocmVmPScjcycgLz4KCTx1c2UgeD0nLTM1JyB5PScxJyB0cmFuc2Zvcm09J21hdHJpeCgtMSAwIDAgMSAwIDApJyBmaWxsLW9wYWNpdHk9JzAuMScgeGxpbms6aHJlZj0nI3MnIC8+CQoJPHVzZSB4PSczMCcgeT0nNC41JyBmaWxsLW9wYWNpdHk9JzAuMicgeGxpbms6aHJlZj0nI3MnIC8+Cgk8dXNlIHg9Jy0zNScgeT0nOCcgdHJhbnNmb3JtPSdtYXRyaXgoLTEgMCAwIDEgMCAwKScgZmlsbC1vcGFjaXR5PScwLjEnIHhsaW5rOmhyZWY9JyNzJyAvPgkKCTx1c2UgeD0nMzAnIHk9JzExLjUnIGZpbGwtb3BhY2l0eT0nMC4xNScgeGxpbms6aHJlZj0nI3MnIC8+Cgk8dXNlIHg9Jy0zNScgeT0nMTUnIHRyYW5zZm9ybT0nbWF0cml4KC0xIDAgMCAxIDAgMCknIGZpbGwtb3BhY2l0eT0nMC4xJyB4bGluazpocmVmPScjcycgLz4KCTx1c2UgeD0nMzAnIHk9JzE4LjUnIGZpbGwtb3BhY2l0eT0nMC4xJyB4bGluazpocmVmPScjcycgLz4KCTwvZz4KCTx1c2UgeD0nLTM1JyB5PScyMScgdHJhbnNmb3JtPSdtYXRyaXgoLTEgMCAwIDEgMCAwKScgeGxpbms6aHJlZj0nI2InIC8+Cgk8dXNlIHg9Jy03MScgeT0nLTE0JyB0cmFuc2Zvcm09J21hdHJpeCgtMSAwIDAgLTEgMCAwKScgeGxpbms6aHJlZj0nI2InIC8+Cgk8dXNlIHg9JzM2JyB5PSctMjgnIHRyYW5zZm9ybT0nbWF0cml4KDEgMCAwIC0xIDAgMCknIHhsaW5rOmhyZWY9JyNiJyAvPgoJPHVzZSB4PSczNicgeT0nLTQ5JyB0cmFuc2Zvcm09J21hdHJpeCgxIDAgMCAtMSAwIDApJyB4bGluazpocmVmPScjYicgLz4KPC9zdmc+Cg==');
+			bottom: 0;
+			content: '';
+			display: block;
+			left: 0;
+			height: 20px;
+			position: absolute;
+			width: 100%;
+		}
+
+		article {
+			float: left;
+			width: 100%;
+
+			h2 {
+				background: $grey;
+				border-radius: 50%;
+				color: $lightgreen;
+				height: 10rem;
+				padding: 5rem 1rem 0;
+				text-align: center;
+				width: 14rem;
+			}
+
+			p {
+				margin: 2rem 0 0;
+			}
+		}
+
+		div {
+			float: right;
+			padding: $padding 0;
+			vertical-align: bottom;
+			width: 100%;
+		}
+	}
+}
+
+/*============================================
+  Interior Pages
+=============================================*/
+
+.icon-layout {
+	background: $lightgreen;
+	padding-top: 3rem;
+	position: relative;
+	top: -9rem;
+
+	h1 {
+		margin: 0;
+		padding: 0;
+	}
+
+	section{
+
+		&:first-of-type {
+			padding-top: 4rem;
+			
+			article, div {
+				margin-top: 0;
+			}
+		}
+
+		&:last-of-type {
+			padding-bottom: 0;
+		}
+
+		&.successful {
+			margin-top: -2rem;
+			padding-top: 0;
+		}
+	}
+
+	article {
+		display: block;
+		float: none;
+		margin: 0 auto;
+		width: 16em;
+
+		h2 {
+			background: $grey;
+			border-radius: 4rem;
+			color: $lightgreen;
+			font-size: 4rem;
+			line-height: 16rem;
+			height: auto;
+			padding: 0;
+			position: relative;
+			text-align: center;
+			width: 16rem;
+
+			a {
+				display: block;
+				color: $lightgreen;
+
+				&:hover {
+					color: $orange;
+
+					.beak {
+						background: $orange;
+						@include vendor-prefix (transition, 0.3s all ease);
+					}
+
+					.head {
+						background: $orange;
+						border-bottom: .25rem solid $orange / 1.25;
+						@include vendor-prefix (transition, 0.3s all ease);
+					}
+
+					path, ellipse, circle {
+						fill: $orange;
+					}
+				}
+			}
+
+			svg {
+				display: block;
+				float: none;
+				height: 4em;
+				margin: 0 auto;
+				width: 35%;
+
+				#smokepath {
+					fill: none;
+				}
+
+				path , ellipse, circle {
+					fill: $lightgreen;
+				}
+			}
+
+			.brain, .pipe {
+
+				svg {
+					width: 45%;
+				}
+			}
+
+			&.success {
+
+				i {
+					display: block;
+					position: relative;
+					@include vendor-prefix (animation, sent 2s linear);
+					@include vendor-prefix (animation-fill-mode, forwards);
+				}
+
+				a {
+					left: 100%;
+					position: absolute;
+					top: 0;
+					visibility: hidden;
+					@include vendor-prefix (animation, home 3.5s linear);
+					@include vendor-prefix (animation-fill-mode, forwards);
+				}
+			}
+		}
+	}
+
+	div {
+		display: block;
+		float: none;
+		margin: 0 auto;
+		padding: 0;
+		text-align: center;
+		width: 80%;
+
+		h2 {
+
+			a {
+				color: $grey;
+
+				&:hover {
+					color: $orange;
+				}
+			}
+		}
+	}
+
+	form {
+		margin-top: 1rem;
+
+		input {
+			background: $grey;
+			border: none;
+			box-sizing: border-box;
+			color: $lightgreen;
+			float: left;
+			line-height: 1rem;
+			padding: 1rem;
+			width: 45%;
+		}
+
+		#name {
+			margin-right: 10%;
+		}
+
+		textarea {
+			@extend input;
+			height: 6rem;
+			margin-top: 1rem;
+			width: 100%;
+		}
+
+		button {
+			background: $grey;
+			border: none;
+			color: $lightgreen;
+			float: right;
+			margin-top: 1rem;
+			padding: $padding 2rem;
+			@include vendor-prefix (transition, 0.3s background ease);
+
+			&:hover, &:focus {
+				background: $orange;
+				@include vendor-prefix (transition, 0.3s background ease);
+			}
+		}
+
+		.progress {
+			@include vendor-prefix (transform, rotateZ(360deg));
+			@include vendor-prefix (transition, 2s all linear);
+		}
+	}
+
+	.error {
+		background: $sky;
+		color: red;
+		margin: 0 auto;
+		padding: $padding;
+		text-align: center;
+		width: 100%;
+	}
+
+	img {
+		width: 100%;
+	}
+}
+
+/*============================================
+  Titanis
+=============================================*/
+
+.icon-layout {
+
+	div.titanis {
+		line-height: 1rem;
+		margin: 0 auto;
+		padding: 4rem;
+		position: relative;
+		width: 8rem;  
+	}
+
+	div.beak {
+		border-radius: 0 0 4rem 3rem;
+		@include axis(8rem, 2rem, $lightgreen, 0 0);
+		@include vendor-prefix (animation, chomp 2s linear infinite);
+		@include vendor-prefix (transition, 0.3s all ease);
+	}
+
+	div.head {
+		background: $lightgreen;
+		border-bottom: .25rem solid $lightgreen / 1.25;
+		border-radius: 3rem 8rem 0 0;
+		height: 3rem;
+		position: relative;
+		width: 8rem;
+		@include vendor-prefix (transition, 0.3s all ease);
+		
+		&:before {
+			background: rgba(80,80,80,0.5);
+			border-radius: 50%;
+			height: 1.75rem;
+			content: ''; 
+			left: 1rem;
+			position: absolute;
+			top: .5rem;
+			width: 2rem;
+		}
+	  
+	  	&:after {
+			@extend .head:before;
+			height: .5rem;
+			left: auto;
+			right: 2.5rem;
+			width: 1.25rem;
+	  	}
+	}
+}
+
+/*============================================
+  Footer
+=============================================*/
+
+footer {
+
+	a {
+		display: inline-block;
+		padding: 0 5%;
+	}
+}
+
+/*============================================
+  Input Placeholders
+=============================================*/
+
+::-webkit-input-placeholder {
+   color: $lightgreen;
+   padding: .25rem 0 0;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: $lightgreen;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: $lightgreen;  
+}
+
+:-ms-input-placeholder {  
+   color: $lightgreen;  
+}
+
+/*============================================
+  404
+=============================================*/
+
+.fourohfour {
+	overflow: hidden;
+
+	.pteranodon {
+		visibility: hidden;
+	}
+
+	.triceratops {
+		@include vendor-prefix (animation, none);
+		@include vendor-prefix (transform, rotate(180deg));
+
+		&:after {
+			visibility: hidden;
+		}
+	}
+}

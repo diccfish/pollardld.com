@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8"/>
+	<meta http-equiv="X-UA-Compatible" content="chrome=1"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+	<meta description="my map of places visited and wanting to go.">
+
+  	<link href='http://api.tiles.mapbox.com/mapbox.js/v1.5.2/mapbox.css' rel='stylesheet' />
+  	<!--[if lte IE 8]>
+    	<link href='//api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.ie.css' rel='stylesheet'>
+  	<![endif]-->
+	
+	<style>
+	    body { 
+	    	margin: 0; 
+	    	padding: 0; 
+	    }
+	    #map { 
+	    	bottom: 0;
+	    	left: 0;
+	    	position: absolute; 
+	    	right: 0;
+	    	top: 0; 
+	    	width: 100%; 
+	    }
+	</style>
+
+	<title>MAP of David Pollard | Where I have been</title>
+	
+</head>
+<body>
+
+<div id='map'></div>
+
+<script src='http://api.tiles.mapbox.com/mapbox.js/v1.5.2/mapbox.js'></script>
+<script>
+  	// ramp up dat map
+	var map = L.mapbox.map('map', 'diccfish.map-fwz7rlzv')
+			  .setView( [30, -30], 3);
+
+	// Lengend
+	map.legendControl.addLegend("Pink = Been");
+	map.legendControl.addLegend("Grey = Want");
+
+	// Zoom in on da clicks
+	map.markerLayer.on( 'click', function(e) {
+        map.panTo( e.layer.getLatLng() );
+    });
+
+
+	   
+</script>
+</body>
+</html>
